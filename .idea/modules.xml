@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/helloworld-webapp.iml" filepath="$PROJECT_DIR$/helloworld-webapp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/PlayingWithWebservices.iml" filepath="$PROJECT_DIR$/PlayingWithWebservices.iml" />
     </modules>
   </component>
 </project>

@@ -4,7 +4,7 @@
     <root id="root">
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
-          <element id="module-output" name="helloworld-webapp" />
+          <element id="module-output" name="PlayingWithWebservices" />
         </element>
         <element id="directory" name="lib">
           <element id="library" level="project" name="Maven: com.sun.jersey:jersey-servlet:1.19" />
@@ -39,7 +39,7 @@
       <element id="directory" name="META-INF">
         <element id="file-copy" path="$PROJECT_DIR$/target/helloworld-webapp/META-INF/MANIFEST.MF" />
       </element>
-      <element id="javaee-facet-resources" facet="helloworld-webapp/web/Web" />
+      <element id="javaee-facet-resources" facet="PlayingWithWebservices/web/Web" />
     </root>
   </artifact>
 </component>
