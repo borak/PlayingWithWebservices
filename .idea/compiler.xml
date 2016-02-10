@@ -24,9 +24,17 @@
         <processorPath useClasspath="true" />
         <module name="helloworld-webapp" />
       </profile>
+      <profile default="false" name="Annotation profile for PlayingWithWebservices" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+        <module name="PlayingWithWebservices" />
+      </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="helloworld-webapp" target="1.6" />
+      <module name="PlayingWithWebservices" target="1.6" />
     </bytecodeTargetLevel>
   </component>
 </project>

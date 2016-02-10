@@ -15,7 +15,6 @@ import java.sql.DriverManager;
 /**
  * Created by Kim on 2016-02-07.
  */
-// The Java class will be hosted at the URI path "/helloworld"
 @Path("/helloworldserver")
 public class HWServer {
 
@@ -26,9 +25,8 @@ public class HWServer {
     @GET
     // The Java method will produce content identified by the MIME Media type "text/plain"
     @Produces("text/plain")
-    public String getClichedMessage() {
-        // Return some cliched textual content
-        System.out.println("SERVICE MATCHED: getClichedMessage()");
+    public String getUsername() {
+        System.out.println("SERVICE MATCHED: getUsername()");
         return "Your profile name";
     }
 
