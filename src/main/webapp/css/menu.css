@@ -17,6 +17,9 @@ div.menuButton {
     text-decoration:none;
     text-align: center;
     float: left;
+	clear: left;
+	margin-top: 20px;
+	width: 150px;
 }
 div.menuButton:hover {
     background-color:#68a54b;
@@ -28,7 +31,7 @@ div.menuButton:active {
 
 #response_content {
     margin-top: 20px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     overflow: auto;
     padding: 10px;
     height: 40vh;
@@ -36,4 +39,7 @@ div.menuButton:active {
     font-family:Arial;
     font-size:1em;
     color:#ffffff;
+}
+
+#test_customer_btn {
 }

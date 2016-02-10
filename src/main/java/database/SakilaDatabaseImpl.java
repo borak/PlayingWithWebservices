@@ -18,7 +18,7 @@ public class SakilaDatabaseImpl implements Serializable {
         List<CustomerEntity> result = session.createQuery("from CustomerEntity where id=" + id).list();
         session.getTransaction().commit();
         //session.close();
-        return result.get(0);
+        return result.isEmpty() ? null : result.get(0);
     }
 
     public void newCustomer(CustomerEntity c) {

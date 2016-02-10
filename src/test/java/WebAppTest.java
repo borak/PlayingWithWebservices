@@ -38,29 +38,25 @@
  * holder.
  */
 
-package com.sun.jersey.samples.helloworld;
-
 import com.sun.jersey.api.client.WebResource;
 import com.sun.jersey.core.header.MediaTypes;
 import com.sun.jersey.test.framework.JerseyTest;
 import com.sun.jersey.test.framework.WebAppDescriptor;
+import database.SakilaDatabaseImpl;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class HelloWorldWebAppTest extends JerseyTest {
+public class WebAppTest extends JerseyTest {
 
 
-    public HelloWorldWebAppTest() throws Exception {
+    public WebAppTest() throws Exception {
         super(new WebAppDescriptor.Builder("com.sun.jersey.samples.helloworld.resources")
                 .contextPath("helloworld-webapp").build());
+                //.contextPath("hwserver").build());
     }
 
-    /**
-     * Test that the expected response is sent back.
-     * @throws java.lang.Exception
-     */
     @Test
-    public void testHelloWorld() throws Exception {
+    public void testSimpleWebserviceCall() throws Exception {
         WebResource webResource = resource();
         String responseMsg = webResource.path("helloworld").get(String.class);
         Assert.assertEquals("Hello World", responseMsg);
@@ -73,5 +69,11 @@ public class HelloWorldWebAppTest extends JerseyTest {
                 accept(MediaTypes.WADL).get(String.class);
 
         Assert.assertTrue(serviceWadl.length() > 0);
+    }
+
+    @Test
+    public void testDatabaseConnection() {
+        Object o = new SakilaDatabaseImpl().getCustomerById(1);
+        Assert.assertNotNull(o);
     }
 }

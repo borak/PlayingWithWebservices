@@ -1,29 +1,30 @@
 package example;
 
 import beans.UserBean;
+import com.google.gson.Gson;
 import com.sun.jersey.api.container.httpserver.HttpServerFactory;
 import com.sun.net.httpserver.HttpServer;
 import database.SakilaDatabaseImpl;
+import model.CustomerEntity;
 
-import javax.json.Json;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MultivaluedMap;
 
 /**
  * Created by Kim on 2016-02-07.
  */
-@Path("/hwserver")
+@Path("/helloworld-webapp")
 public class HWServer {
 
-    private SakilaDatabaseImpl sakilaDatabase;
+    private SakilaDatabaseImpl sakilaDatabase = new SakilaDatabaseImpl();
 
     // The Java method will process HTTP GET requests
     @GET
+    @Path("/servermessage")
     // The Java method will produce content identified by the MIME Media type "text/plain"
     @Produces("text/plain")
-    public String getUsername() {
-        System.out.println("SERVICE MATCHED: getUsername()");
-        return "Your profile name";
+    public String getServerMessage() {
+        return "HWServer v0.1";
     }
 
     @POST
@@ -39,16 +40,11 @@ public class HWServer {
 
     @GET
     @Path("/view/json")
-    @Produces({"application/json"})
-    //@Produces(MediaType.APPLICATION_JSON)
-    public String getUserDataAsJson(//@BeanParam UserBean userBean
-    ) {
-        sakilaDatabase.getCustomerById(1);
-        String json = Json.createObjectBuilder()
-                .add("username", "")
-                .build()
-                .toString();
-        return json;
+    @Produces("application/json")
+    public String getUserDataAsJson(@QueryParam("id") int id) {
+        CustomerEntity c = sakilaDatabase.getCustomerById(id);
+        Gson gson = new Gson();
+        return gson.toJson(c);
     }
 
     public static void main(String[] args) throws Exception {
@@ -58,13 +54,10 @@ public class HWServer {
 
         System.out.println("Database connection established.");
 
-        Object o = new SakilaDatabaseImpl().getCustomerById(1);
-        System.out.println("Found o="+o.toString());
-
         server.start();
 
         System.out.println("Server running");
-        System.out.println("Visit: http://localhost:9998/hwserver");
+        System.out.println("Visit: http://localhost:9998/helloworld-webapp"); // hwserver
         System.out.println("Hit return to stop...");
         System.in.read();
         System.out.println("Stopping server");

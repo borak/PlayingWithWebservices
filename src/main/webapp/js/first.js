@@ -12,7 +12,7 @@ $(document).ready(function() {
     });
 
     $('#testbtn').click(function(){$.ajax({
-        url: "http://localhost:9998/helloworldserver/",
+        url: "http://localhost:9998/helloworld-webapp/view/json",
 
         data: {
         },
@@ -20,8 +20,34 @@ $(document).ready(function() {
 
         dataType : "text",
 
+        success: function( text ) {
+            weblog(text);
+            console.log( "Success: " + text );
+        },
+
+        error: function( xhr, status, errorThrown ) {
+            var error = "Error: " + errorThrown + "<br />" + "Status: " + status;
+            weblog(error);
+        },
+
+        complete: function( xhr, status ) {
+            var msg = "The request is complete!";
+            weblog(msg + "<br />");
+        }
+    })});
+
+	$('#test_customer_btn').click(function(){$.ajax({
+        url: "http://localhost:9998/helloworld-webapp/view/json/",
+
+        data: {
+            id: 2
+        },
+        type: "GET",
+
+        dataType : "json",
+
         success: function( json ) {
-            weblog(json);
+            weblog(json.firstName);
             console.log( "Success: " + json );
         },
 
