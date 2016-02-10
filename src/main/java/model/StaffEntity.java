@@ -1,6 +1,7 @@
 package model;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.Arrays;
 
@@ -8,8 +9,8 @@ import java.util.Arrays;
  * Created by Kim on 2016-02-09.
  */
 @Entity
-@Table(name = "staff", schema = "sakila", catalog = "")
-public class StaffEntity {
+@Table(name = "staff", schema = "sakila")
+public class StaffEntity implements Serializable {
     private byte staffId;
     private String firstName;
     private String lastName;

@@ -1,13 +1,14 @@
 package model;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 /**
  * Created by Kim on 2016-02-09.
  */
 @Entity
-@Table(name = "film_text", schema = "sakila", catalog = "")
-public class FilmTextEntity {
+@Table(name = "film_text", schema = "sakila")
+public class FilmTextEntity implements Serializable {
     private short filmId;
     private String title;
     private String description;

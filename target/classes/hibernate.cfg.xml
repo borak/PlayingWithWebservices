@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+
+    <session-factory>
+        <!-- Database connection settings -->
+        <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/sakila?useSSL=false</property>
+        <property name="connection.username">admin</property>
+        <property name="connection.password">passw</property>
+        <!-- property name="connection.pool_size">10</property -->
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+        <property name="hibernate.current_session_context_class">thread</property>
+
+        <mapping class="model.ActorEntity"/>
+        <mapping class="model.CityEntity"/>
+        <mapping class="model.CountryEntity"/>
+        <mapping class="model.AddressEntity"/>
+        <mapping class="model.CategoryEntity"/>
+        <mapping class="model.CustomerEntity"/>
+        <mapping class="model.FilmEntity"/>
+        <mapping class="model.FilmActorEntity"/>
+        <mapping class="model.FilmCategoryEntity"/>
+        <mapping class="model.FilmTextEntity"/>
+        <!-- mapping class="model.InventoryEntity"/ -->
+        <mapping class="model.LanguageEntity"/>
+
+        <mapping class="model.PaymentEntity"/>
+        <mapping class="model.RentalEntity"/>
+        <mapping class="model.StaffEntity"/>
+        <mapping class="model.StoreEntity"/>
+
+    </session-factory>
+
+</hibernate-configuration>

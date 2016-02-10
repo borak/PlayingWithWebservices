@@ -1,20 +1,29 @@
 package model;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.io.Serializable;
 import java.sql.Timestamp;
 
 /**
  * Created by Kim on 2016-02-09.
  */
 @Entity
-@Table(name = "inventory", schema = "sakila", catalog = "")
-public class InventoryEntity {
+@Table(name = "inventory", schema = "sakila")
+public class InventoryEntity implements Serializable {
+    private short inventory_id;
     private short filmId;
     private byte storeId;
     private Timestamp lastUpdate;
+
+    @Id
+    @Column(name = "inventory_id")
+    public short getInventoryId() {
+        return inventory_id;
+    }
+
+    public void setInventoryId(short filmId) {
+        this.inventory_id = inventory_id;
+    }
 
     @Basic
     @Column(name = "film_id")

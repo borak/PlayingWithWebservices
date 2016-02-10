@@ -1,15 +1,16 @@
 package model;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.sql.Timestamp;
 
 /**
  * Created by Kim on 2016-02-09.
  */
 @Entity
-@Table(name = "film_category", schema = "sakila", catalog = "")
-@IdClass(FilmCategoryEntityPK.class)
-public class FilmCategoryEntity {
+@Table(name = "film_category", schema = "sakila")
+// @IdClass(FilmCategoryEntityPK.class)
+public class FilmCategoryEntity implements Serializable {
     private short filmId;
     private byte categoryId;
     private Timestamp lastUpdate;

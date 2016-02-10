@@ -1,14 +1,15 @@
 package model;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.sql.Timestamp;
 
 /**
  * Created by Kim on 2016-02-09.
  */
 @Entity
-@Table(name = "language", schema = "sakila", catalog = "")
-public class LanguageEntity {
+@Table(name = "language", schema = "sakila")
+public class LanguageEntity implements Serializable {
     private byte languageId;
     private String name;
     private Timestamp lastUpdate;

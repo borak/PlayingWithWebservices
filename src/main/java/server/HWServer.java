@@ -1,9 +1,8 @@
-package example;
+package server;
 
-import beans.UserBean;
 import com.sun.jersey.api.container.httpserver.HttpServerFactory;
 import com.sun.net.httpserver.HttpServer;
-import database.SakilaDatabaseImpl;
+import beans.UserBean;
 
 import javax.json.Json;
 import javax.ws.rs.*;
@@ -12,18 +11,44 @@ import javax.ws.rs.core.MultivaluedMap;
 /**
  * Created by Kim on 2016-02-07.
  */
-@Path("/hwserver")
+@Path("/helloworldserver")
 public class HWServer {
+/*
+    private HttpServer server;
 
-    private SakilaDatabaseImpl sakilaDatabase;
+    public HWServer() throws IOException {
+        HttpServer server = HttpServerFactory.create("http://localhost:9998/");
+    }
 
-    // The Java method will process HTTP GET requests
+    public void start() {
+        server.start();
+    }
+
+    public void stop() {
+        server.stop(0);
+    }
+
+    private SakilaDatabaseImpl sakilaDB = null;
+
+    public static void setSakilaDB(SakilaDatabaseImpl sakilaDB) {
+        this.sakilaDB = sakilaDB;
+    }
+*/
+    //public SakilaDatabaseImpl getSakilaDB() {
+    //    return this.sakilaDB;
+    //}
+
     @GET
-    // The Java method will produce content identified by the MIME Media type "text/plain"
     @Produces("text/plain")
     public String getUsername() {
         System.out.println("SERVICE MATCHED: getUsername()");
-        return "Your profile name";
+        /*if(sakilaDB == null) {
+            return "";
+        }
+        CustomerEntity c = sakilaDB.getCustomerById(0);
+        return c.getEmail();
+        */
+        return "Username Test";
     }
 
     @POST
@@ -41,9 +66,8 @@ public class HWServer {
     @Path("/view/json")
     @Produces({"application/json"})
     //@Produces(MediaType.APPLICATION_JSON)
-    public String getUserDataAsJson(//@BeanParam UserBean userBean
+    public String getCustomerDataAsJson(//@BeanParam UserBean userBean
     ) {
-        sakilaDatabase.getCustomerById(1);
         String json = Json.createObjectBuilder()
                 .add("username", "")
                 .build()
@@ -56,15 +80,16 @@ public class HWServer {
 
         HttpServer server = HttpServerFactory.create("http://localhost:9998/");
 
-        System.out.println("Database connection established.");
+        //HWServer hwServer = new HWServer();
 
-        Object o = new SakilaDatabaseImpl().getCustomerById(1);
-        System.out.println("Found o="+o.toString());
+        //setSakilaDB(new SakilaDatabaseImpl());
+
+        System.out.println("Database connection established.");
 
         server.start();
 
         System.out.println("Server running");
-        System.out.println("Visit: http://localhost:9998/hwserver");
+        System.out.println("Visit: http://localhost:9998/helloworldserver");
         System.out.println("Hit return to stop...");
         System.in.read();
         System.out.println("Stopping server");

@@ -18,13 +18,6 @@
         <class>model.RentalEntity</class>
         <class>model.StaffEntity</class>
         <class>model.StoreEntity</class>
-        <class>model.ActorInfoEntity</class>
-        <class>model.CustomerListEntity</class>
-        <class>model.FilmListEntity</class>
-        <class>model.NicerButSlowerFilmListEntity</class>
-        <class>model.SalesByFilmCategoryEntity</class>
-        <class>model.SalesByStoreEntity</class>
-        <class>model.StaffListEntity</class>
         <properties>
             <property name="eclipselink.jdbc.url" value="jdbc:mysql://localhost:3306/sakila"/>
             <property name="eclipselink.jdbc.driver" value="com.mysql.jdbc.Driver"/>

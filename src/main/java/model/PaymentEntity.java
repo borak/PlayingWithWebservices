@@ -1,6 +1,7 @@
 package model;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
 
@@ -8,8 +9,8 @@ import java.sql.Timestamp;
  * Created by Kim on 2016-02-09.
  */
 @Entity
-@Table(name = "payment", schema = "sakila", catalog = "")
-public class PaymentEntity {
+@Table(name = "payment", schema = "sakila")
+public class PaymentEntity implements Serializable {
     private short paymentId;
     private short customerId;
     private byte staffId;

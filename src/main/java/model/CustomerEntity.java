@@ -1,14 +1,15 @@
 package model;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.sql.Timestamp;
 
 /**
  * Created by Kim on 2016-02-09.
  */
 @Entity
-@Table(name = "customer", schema = "sakila", catalog = "")
-public class CustomerEntity {
+@Table(name = "customer", schema = "sakila")
+public class CustomerEntity implements Serializable {
     private short customerId;
     private byte storeId;
     private String firstName;

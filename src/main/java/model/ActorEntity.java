@@ -1,6 +1,7 @@
 package model;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.sql.Timestamp;
 
 /**
@@ -8,7 +9,7 @@ import java.sql.Timestamp;
  */
 @Entity
 @Table(name = "actor", schema = "sakila") //, catalog = ""
-public class ActorEntity {
+public class ActorEntity implements Serializable {
     private short actorId;
     private String firstName;
     private String lastName;
