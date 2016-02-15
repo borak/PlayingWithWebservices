@@ -1,10 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<application xmlns="http://java.sun.com/xml/ns/javaee"
-             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-             xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/application_6.xsd"
-             version="6">
+<application xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xmlns:xs="http://www.w3.org/2001/XMLSchema"
+             xmlns="http://wadl.dev.java.net/2009/02">
 
+    <!--
     <module id="helloworld-webapp-EJB">
         <ejb>ejb.jar</ejb>
     </module>
+    -->
+
+    <doc xmlns:jersey="http://jersey.dev.java.net/" jersey:generatedBy="Jersey: 2.5-SNAPSHOT 2013-12-20 17:14:21"/>
+    <grammars/>
+
+    <resources base="http://localhost:9998/">
+        <resource path="helloworld-webapp/customer/{id}">
+            <param type="xs:int" name="customerId"/>
+            <method name="GET" id="getCustomer">
+                <response>
+                    <representation mediaType="application/json"/>
+                </response>
+            </method>
+        </resource>
+
+        <resource path="helloworld-webapp/servermessage">
+            <method name="GET" id="getServerMessage">
+                <response>
+                    <representation mediaType="text/plain"/> <!-- "xs:string" -->
+                </response>
+            </method>
+        </resource>
+
+        <resource path="helloworld-webapp/view/json">
+            <param type="xs:int" name="customerId"/>
+            <method name="GET" id="getCustomerAsJSON">
+                <response>
+                    <representation mediaType="application/json"/>
+                </response>
+            </method>
+        </resource>
+
+        <resource path="helloworld-webapp/customer">
+            <param type="xs:string"  name="customerId"/> <!-- style="template" -->
+            <method name="POST" id="newCustomer">
+                <response>
+                    <representation mediaType="application/json"/>
+                </response>
+            </method>
+        </resource>
+    </resources>
 </application>

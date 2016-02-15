@@ -63,17 +63,18 @@ public class WebAppTest extends JerseyTest {
     }
 
     @Test
-    public void testApplicationWadl() {
+    public void testDatabaseConnection() {
+        Object o = new SakilaDatabaseImpl().getCustomerById(1);
+        Assert.assertNotNull(o);
+    }
+
+    @Test
+    public void testWadl() {
         WebResource webResource = resource();
         String serviceWadl = webResource.path("application.wadl").
                 accept(MediaTypes.WADL).get(String.class);
 
         Assert.assertTrue(serviceWadl.length() > 0);
-    }
 
-    @Test
-    public void testDatabaseConnection() {
-        Object o = new SakilaDatabaseImpl().getCustomerById(1);
-        Assert.assertNotNull(o);
     }
 }

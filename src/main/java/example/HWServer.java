@@ -1,41 +1,29 @@
 package example;
 
-import beans.UserBean;
 import com.google.gson.Gson;
 import com.sun.jersey.api.container.httpserver.HttpServerFactory;
 import com.sun.net.httpserver.HttpServer;
 import database.SakilaDatabaseImpl;
 import model.CustomerEntity;
+import org.springframework.stereotype.Component;
 
 import javax.ws.rs.*;
-import javax.ws.rs.core.MultivaluedMap;
+import javax.ws.rs.core.Response;
 
 /**
  * Created by Kim on 2016-02-07.
  */
+@Component
 @Path("/helloworld-webapp")
 public class HWServer {
 
     private SakilaDatabaseImpl sakilaDatabase = new SakilaDatabaseImpl();
 
-    // The Java method will process HTTP GET requests
     @GET
     @Path("/servermessage")
-    // The Java method will produce content identified by the MIME Media type "text/plain"
     @Produces("text/plain")
     public String getServerMessage() {
         return "HWServer v0.1";
-    }
-
-    @POST
-    @Consumes("application/x-www-form-urlencoded")
-    public void post(MultivaluedMap<String, String> formParams) {
-        System.out.println("Received POST for user="+formParams.getFirst("username"));
-    }
-
-    @POST
-    public void post(@BeanParam UserBean userBean, String entity) {
-        System.out.println("Received POST for user="+userBean.getUsername());
     }
 
     @GET
@@ -47,17 +35,43 @@ public class HWServer {
         return gson.toJson(c);
     }
 
+    @POST
+    @Path("{customer}")
+    @Produces("application/json")
+    public Response postCustomer(@BeanParam CustomerEntity customerEntity) {
+        System.out.println("Received POST for customer="+customerEntity.getCustomerId());
+
+        if(customerEntity == null)
+            return Response.serverError().build();
+
+        sakilaDatabase.newCustomer(customerEntity);
+        return Response.ok().build();
+    }
+
+    @GET
+    @Path("{customer}")
+    @Produces("application/json")
+    public Response getCustomer(@PathParam("id") int id) {
+        System.out.println("Received GET for customer="+id);
+        CustomerEntity c = sakilaDatabase.getCustomerById(id);
+
+        if(c == null)
+            return Response.serverError().build();
+
+        Gson gson = new Gson();
+        return Response.ok(gson.toJson(c)).build();
+    }
+
     public static void main(String[] args) throws Exception {
         System.out.println("Server starting...");
 
         HttpServer server = HttpServerFactory.create("http://localhost:9998/");
 
-        System.out.println("Database connection established.");
-
         server.start();
 
         System.out.println("Server running");
         System.out.println("Visit: http://localhost:9998/helloworld-webapp");
+        System.out.println("TEST: http://localhost:9998/helloworld-webapp/application.wadl");
         System.out.println("Hit return to stop...");
         System.in.read();
         System.out.println("Stopping server");

@@ -9,12 +9,12 @@ import java.io.Serializable;
 /**
  * Created by Kim on 2016-02-10.
  */
-@Named("CustomerBeanEJB")
+@Named("customerBean")
 @SessionScoped
-public class CustomerBeanBean implements Serializable {
+public class CustomerBean implements Serializable {
 
     private CustomerEntity customer;
 
-    public CustomerBeanBean() {
+    public CustomerBean() {
     }
 }
