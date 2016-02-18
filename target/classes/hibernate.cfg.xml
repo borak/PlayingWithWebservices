@@ -8,9 +8,7 @@
     <session-factory>
         <!-- Database connection settings -->
         <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/sakila?useSSL=false</property>
-        <property name="connection.username">admin</property>
-        <property name="connection.password">passw</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/sakila</property>
         <!-- property name="connection.pool_size">10</property -->
         <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
         <property name="hibernate.current_session_context_class">thread</property>
@@ -32,6 +30,7 @@
         <mapping class="model.RentalEntity"/>
         <mapping class="model.StaffEntity"/>
         <mapping class="model.StoreEntity"/>
+        <mapping class="model.UserEntity"/>
 
     </session-factory>
 

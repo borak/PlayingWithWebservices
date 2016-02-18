@@ -25,7 +25,7 @@
   http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
   http://www.springframework.org/schema/oxm http://www.springframework.org/schema/oxm/spring-oxm-4.0.xsd">
 
-    <bean id="customerBean" class="beans.CustomerBean">
+    <bean id="loginBean" class="example.LoginResource">
     </bean>
 
 </beans>

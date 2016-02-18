@@ -6,22 +6,18 @@ import org.hibernate.cfg.Configuration;
 /**
  * Created by Kim on 2016-02-10.
  */
-public class HibernateUtil {
-    private static final SessionFactory sessionFactory;
+class HibernateUtil {
 
-    static {
+    static SessionFactory createFactory() {
         try {
-            sessionFactory = new Configuration()
+            SessionFactory sessionFactory = new Configuration()
                     .configure()
                     .buildSessionFactory();
+            return sessionFactory;
         } catch (Throwable ex) {
             System.err.println("Initial SessionFactory creation failed." + ex);
             throw new ExceptionInInitializerError(ex);
         }
-    }
-
-    public static SessionFactory getSessionFactory() {
-        return sessionFactory;
     }
 
 }

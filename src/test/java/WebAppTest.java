@@ -42,7 +42,7 @@ import com.sun.jersey.api.client.WebResource;
 import com.sun.jersey.core.header.MediaTypes;
 import com.sun.jersey.test.framework.JerseyTest;
 import com.sun.jersey.test.framework.WebAppDescriptor;
-import database.SakilaDatabaseImpl;
+import database.SakilaDatabase;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -64,7 +64,7 @@ public class WebAppTest extends JerseyTest {
 
     @Test
     public void testDatabaseConnection() {
-        Object o = new SakilaDatabaseImpl().getCustomerById(1);
+        Object o = SakilaDatabase.getInstance().getCustomerById(1);
         Assert.assertNotNull(o);
     }
 

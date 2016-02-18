@@ -3,7 +3,7 @@ package example;
 import com.google.gson.Gson;
 import com.sun.jersey.api.container.httpserver.HttpServerFactory;
 import com.sun.net.httpserver.HttpServer;
-import database.SakilaDatabaseImpl;
+import database.SakilaDatabase;
 import model.CustomerEntity;
 import org.springframework.stereotype.Component;
 
@@ -17,7 +17,7 @@ import javax.ws.rs.core.Response;
 @Path("/helloworld-webapp")
 public class HWServer {
 
-    private SakilaDatabaseImpl sakilaDatabase = new SakilaDatabaseImpl();
+    private SakilaDatabase sakilaDatabase = SakilaDatabase.getInstance();
 
     @GET
     @Path("/servermessage")
